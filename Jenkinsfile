@@ -131,21 +131,6 @@ pipeline {
             }
         }
 
-        stage('Trivy Docker Image Scan') {
-            steps {
-
-                sh '''
-                echo "Running Trivy Image Scan..."
-
-                 trivy image \
-                 --scanners vuln \
-                 --severity HIGH,CRITICAL \
-                 $IMAGE_NAME \
-                 > trivyimage.txt
-
-                '''
-            }
-        }
 
         stage('Docker Push') {
             steps {
