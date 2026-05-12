@@ -130,7 +130,14 @@ pipeline {
             steps {
 
                 sh '''
-                trivy image $IMAGE_NAME > trivyimage.txt
+                echo "Running Trivy Image Scan..."
+
+                 trivy image \
+                 --scanners vuln \
+                 --severity HIGH,CRITICAL \
+                 $IMAGE_NAME \
+                 > trivyimage.txt
+
                 '''
             }
         }
