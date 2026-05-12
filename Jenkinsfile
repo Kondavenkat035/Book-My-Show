@@ -107,7 +107,12 @@ pipeline {
             steps {
 
                 sh '''
-                trivy fs . > trivyfs.txt
+                echo "Running Trivy Filesystem Scan..."
+
+                trivy fs \
+                --scanners vuln \
+                --severity HIGH,CRITICAL \
+               . > trivyfs.txt
                 '''
             }
         }
