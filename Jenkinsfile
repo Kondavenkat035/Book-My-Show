@@ -7,8 +7,8 @@ pipeline {
     }
 
     environment {
-        SCANNER_HOME = tool 'sonar-scanner'
-        IMAGE_NAME = "kastrov/bms:latest"
+        SCANNER_HOME = tool 'sq'
+        IMAGE_NAME = "kondavenkat035/bms:latest"
     }
 
     stages {
@@ -55,7 +55,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sq') {
 
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
