@@ -138,7 +138,7 @@ pipeline {
                 script {
 
                     withDockerRegistry(
-                        credentialsId: 'docker-cred',
+                        credentialsId: 'docker',
                         toolName: 'docker'
                     ) {
 
